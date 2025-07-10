@@ -19,9 +19,11 @@ pipeline {
         }
         stage('Git Pulling') {
             steps {
-                git branch: 'master', url: 'https://github.com/ikramuddin07/mern-stack-devops-project.git'
-            }
-        }
+                git branch: 'master',
+                url: 'https://github.com/ikramuddin07/mern-stack-devops-project.git',
+                credentialsId: 'personal-github-creds'
+    }
+}
         stage('Init') {
             steps {
                 withAWS(credentials: 'aws-creds', region: 'us-east-1') {
